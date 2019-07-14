@@ -1,0 +1,31 @@
+{
+  "name": "oiblib",
+  "version": "1.0.0",
+  "description": "Library for validating and generating Croatian permanent national identification number \"OIB\", it is a number of every Croatian citizen and legal persons domiciled in the Republic of Croatia.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnekich/oiblib"
+  },
+  "keywords": [
+    "oib",
+    "jmbg",
+    "croatia"
+  ],
+  "contributors": [
+    "Gordan Nekić <gordan@neki.ch>"
+  ],
+  "directories": {
+    "src": "src",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npm run mocha-run-tests",
+    "mocha-run-tests": "mocha --timeout 20000 --recursive \"./tests/**/*.test.js\""
+  },
+  "author": "Gordan Nekić",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
