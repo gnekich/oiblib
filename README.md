@@ -87,9 +87,11 @@ OIB and JMBG are NOT numbers, you should consider both OIB and JMBG to always be
 
 ## Todo
 
-- Fully support JMBG
-  - Generate valid JMBG based on random date.
-  - validateJMBG should check if parts of predefined digits are in range. (DD, MM, YYY, RR, BBB, K)
+- [ ] Fully support JMBG
+  - [x] Generate valid JMBG based on random date.
+  - [ ] validateJMBG should check if parts of predefined digits are in range. (DD, MM, YYY, RR, BBB, K)
+  - [ ] JMBG parsing to extract (DD, MM, YYY, RR, BBB, K)
+  - [ ] Pass params to random JBMG generator to respect predefined options like (DD, MM, YYY, RR, BBB, K)
 
 ## Thanks
 
