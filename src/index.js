@@ -146,6 +146,7 @@ const generatePossibleJMBG = () => {
 };
 
 module.exports = {
+  transformStringToArrayOfDigits,
   calculateOIBControlNumber,
   calculateJMBGControlNumber,
   validateOIB,
