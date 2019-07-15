@@ -71,7 +71,9 @@ console.log(`For first 12 digits of JMBG: ${'123456789012'}, the control number 
 
 - See `./tests` for more examples.
 
-----
+## Note
+
+OIB and JMBG are NOT numbers, you should consider both OIB and JMBG to always be a string, thus sending anything else than a string type to `validateOIB` or `validateJMBG` should return `false`.
 
 ## Todo
 
@@ -79,13 +81,9 @@ console.log(`For first 12 digits of JMBG: ${'123456789012'}, the control number 
   - Generate valid JMBG based on random date.
   - validateJMBG should check if parts of predefined digits are in range. (DD, MM, YYY, RR, BBB, K)
 
-----
-
 ## Thanks
 
 + [Gordan Nekić](https://github.com/gnekich)
-
-----
 
 ## Contributing
 - Fork this repo
@@ -96,9 +94,8 @@ console.log(`For first 12 digits of JMBG: ${'123456789012'}, the control number 
 - Make sure your features are fully tested
 - Open a pull request, and enjoy <3
 
-----
 
-### MIT license
+## MIT license
 Copyright (c) 2019 Gordan Nekić
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -118,5 +115,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
----
