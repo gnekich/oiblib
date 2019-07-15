@@ -34,6 +34,12 @@ console.log(validateOIB('00000000001')); // true
 // Invalid OIB
 console.log(validateOIB('00000000003')); // false
 
+// Valid JMBG
+console.log(validateJMBG('0101990360007')); // true
+
+// Invalid JMBG
+console.log(validateJMBG('0101990360005')); // false
+
 ````
 
 ````javascript
@@ -61,19 +67,23 @@ const {
   calculateJMBGControlNumber,
 } = require('oiblib');
 
-const OIBControlNumber = calculateOIBControlNumber(transformStringToArrayOfDigits('1234567890')); // Note 10 digits
-console.log(`For first 10 digits of OIB: ${'1234567890'}, the control number is: ${OIBControlNumber}`);
+const inputOIB = '1234567890'; // Note 10 digits
+const OIBControlNumber = calculateOIBControlNumber(transformStringToArrayOfDigits(inputOIB));
+console.log(`For first 10 digits of OIB: ${inputOIB}, the control number is: ${OIBControlNumber}`);
 
-const JMBGControlNumber = calculateJMBGControlNumber(transformStringToArrayOfDigits('123456789012')); // Note 12 digits
-console.log(`For first 12 digits of JMBG: ${'123456789012'}, the control number is: ${JMBGControlNumber}`);
+const inputJMBG = '010199036000'; // Note 12 digits
+const JMBGControlNumber = calculateJMBGControlNumber(transformStringToArrayOfDigits(inputJMBG));
+console.log(`For first 12 digits of JMBG: ${inputJMBG}, the control number is: ${JMBGControlNumber}`);
 
 ````
 
-- See `./tests` for more examples.
+- See `./examples` for more examples.
 
 ## Note
 
 OIB and JMBG are NOT numbers, you should consider both OIB and JMBG to always be a string, thus sending anything else than a string type to `validateOIB` or `validateJMBG` should return `false`.
+
+`calculateOIBControlNumber` and `calculateJMBGControlNumber` are looking for array of numbers, in order to do \"control number\" calculation, for that you can use helper function `transformStringToArrayOfDigits`. It transforms `'1234567890'` to `[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]`
 
 ## Todo
 
