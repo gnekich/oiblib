@@ -33,14 +33,14 @@ describe('Generate random valid OIB and JMBG', function() {
 
   it('Generate OIB', function(done) {
     const newOIB = generatePossibleOIB();
-    console.log(`Generated OIB: ${newOIB}`, validateOIB(newOIB));
+    // console.log(`Generated OIB: ${newOIB}`, validateOIB(newOIB));
     assert.equal(validateOIB(newOIB), true);
     done();
   })
 
   it('JMBG', function(done) {
     const newJMBG = generatePossibleJMBG();
-    console.log(`Generated JMBG: ${newJMBG}`);
+    // console.log(`Generated JMBG: ${newJMBG}`, validateJMBG(newJMBG));
     assert.equal(validateJMBG(newJMBG), true);
     done();
   })

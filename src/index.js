@@ -39,6 +39,15 @@ const randomId = (_n, _possible) => {
   return text;
 };
 
+// Used to get random integer from min to max
+// The maximum is inclusive and the minimum is inclusive.
+// Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+const getRandomIntInclusive = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // --------------------------------------------------------------------------------
 // OIB Calculations etc.
 
@@ -139,7 +148,16 @@ const validateJMBG = (jmbg) => {
 
 // Generate random number that has valid control number. (Fake but possible JMBG)
 const generatePossibleJMBG = () => {
-  const jmbgWithoutControlNumberInput = `${randomId(12, '0123456789')}`;
+  const randomDate = new Date(getRandomIntInclusive(0, +(new Date))); // Get random unix timestamp
+  const DD = `${('0' + randomDate.getDate()).slice(-2)}`;
+  const MM = `${('0' + (randomDate.getMonth() + 1)).slice(-2)}`;
+  const YYY = `${('' + randomDate.getFullYear()).slice(-3)}`;
+  const RR = `${('0' + getRandomIntInclusive(0, 99)).slice(-2)}`;
+  // We need better random distribution for this... because there is almost 0 chance that there
+  // is 500 male or female children born on same day in one of YU political regions.
+  // but nevertheless it is still a valid JMBG... :)
+  const BBB = `${('00' + getRandomIntInclusive(0, 999)).slice(-3)}`;
+  const jmbgWithoutControlNumberInput = `${DD}${MM}${YYY}${RR}${BBB}`;
   const calculatedControlNumber = calculateJMBGControlNumber(transformStringToArrayOfDigits(jmbgWithoutControlNumberInput));
   // Return both the random and control number
   return `${jmbgWithoutControlNumberInput}${calculatedControlNumber}`;
