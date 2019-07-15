@@ -6,6 +6,10 @@ https://en.wikipedia.org/wiki/Personal_identification_number_(Croatia)
 
 [![NPM](https://nodei.co/npm/oiblib.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.org/oiblib )
 
+It also supports checks for legacy \"unique master citizen number\" also known as \"JMBG\".
+
+https://en.wikipedia.org/wiki/Unique_Master_Citizen_Number
+
 ## Installation
 
 ### npm
@@ -31,8 +35,49 @@ console.log(validateOIB('00000000001')); // true
 console.log(validateOIB('00000000003')); // false
 
 ````
+
+````javascript
+const {
+  validateOIB,
+  validateJMBG,
+  generatePossibleOIB,
+  generatePossibleJMBG,
+} = require('oiblib');
+
+// Generate new valid OIB
+const newOIB = generatePossibleOIB();
+console.log(`Generated OIB: ${newOIB}, is valid oib: ${validateOIB(newOIB)}`);
+
+// Generate new valid JMBG
+const newJMBG = generatePossibleJMBG();
+console.log(`Generated JMBG: ${newJMBG}, is valid jmbg: ${validateJMBG(newJMBG)}`);
+
+````
+
+````javascript
+const {
+  transformStringToArrayOfDigits,
+  calculateOIBControlNumber,
+  calculateJMBGControlNumber,
+} = require('oiblib');
+
+const OIBControlNumber = calculateOIBControlNumber(transformStringToArrayOfDigits('1234567890')); // Note 10 digits
+console.log(`For first 10 digits of OIB: ${'1234567890'}, the control number is: ${OIBControlNumber}`);
+
+const JMBGControlNumber = calculateJMBGControlNumber(transformStringToArrayOfDigits('123456789012')); // Note 12 digits
+console.log(`For first 12 digits of JMBG: ${'123456789012'}, the control number is: ${JMBGControlNumber}`);
+
+````
+
 - See `./tests` for more examples.
 
+----
+
+## Todo
+
+- Fully support JMBG
+  - Generate valid JMBG based on random date.
+  - validateJMBG should check if parts of predefined digits are in range. (DD, MM, YYY, RR, BBB, K)
 
 ----
 
