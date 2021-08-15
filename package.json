@@ -1,6 +1,6 @@
 {
   "name": "oiblib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library for validating and generating Croatian permanent national identification number \"OIB\", it is a number of every Croatian citizen and legal persons domiciled in the Republic of Croatia.",
   "main": "src/index.js",
   "repository": {
